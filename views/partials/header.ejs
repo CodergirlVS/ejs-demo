@@ -9,9 +9,9 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/about">About</a>
-      
+      <% if (typeof variant != 'undefined'){%>
         <em>Variant: <%= typeof variant != 'undefined' ? variant : 'default' %></em>
-        
+      <%}%>
       </li>
     </ul>
   </nav>

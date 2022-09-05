@@ -47,7 +47,7 @@ const editTask = async (req, res) => {
 }
 
 const updateTask = async (req, res) => {
-    task = false
+    let task = false
     try {
         if (req.body.complete) {         
             req.body.completed=true
@@ -57,7 +57,7 @@ const updateTask = async (req, res) => {
         }
 
        task = await Task.findById(req.params.id)
-       console.log(req.body, "Before Mongo update")
+
        await Task.findByIdAndUpdate( req.params.id, req.body, {runValidators: true})
        req.session.pendingMessage = 'The task was updated.'
        res.redirect('/tasks')
