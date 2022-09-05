@@ -7,13 +7,25 @@ const session = require('express-session')
 
 var express = require('express');
 var app = express();
+// const requiredEnvVars = ['SESSION_SECRET', 'MONGODB_URI', 'SPECIAL_SUPERSECRET'];
+// requiredEnvVars.forEach((var) => {
+//   if (process.env.[var] === undefined) { 
+//    throw new Error(`Required environment variable ${var} is missing`);
+//  }
+// });
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
-app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true })); //set up the session
-app.use(express.urlencoded({extended: false})) //invokes express middleware to parse the data that is returned when the browser posts form results.
-app.use('/tasks', setMessage, taskRouter)//invokes the message middleware and the routes you created
+//set up the session
+
+app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true })); 
+
+//invokes express middleware to parse the data that is returned when the browser posts form results.
+app.use(express.urlencoded({extended: false}))
+
+//invokes the message middleware and the routes you created
+app.use('/tasks', setMessage, taskRouter)
 
 // use res.render to load up an ejs view file
 

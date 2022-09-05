@@ -20,11 +20,11 @@
       <input name="name" value="<%=task.name %>"><br>
       <label for="complete">Completed: </label>
       <% if (task.completed) { %>
-        <input type="checkbox" name="complete" value="true" checked><br><br>
+        <input type="checkbox" name="completed" value="true" checked><br><br>
         <% } else { %>
-          <input type="checkbox" name="complete" value="false"><br><br>
+          <input type="checkbox" name="completed" value="false"><br><br>
           <% } %>
-            <button type="submit">Update</button>
+            <button type="submit" class="btn btn-primary">Update</button>
     </form>
     </div>
   </main>

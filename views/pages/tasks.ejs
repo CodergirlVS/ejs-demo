@@ -18,6 +18,12 @@
         <% tasks.forEach(function(task){ %>
           <tr><td><%= task.name %></td><td><%= task.completed %></td>
             <td><a href=<%= "/tasks/edit/" + task.id %>  class="btn btn-primary">Edit</a></td>
+            <td>
+              <form action=<%= "/tasks/update/" + task.id %> method="post">
+                <input type="hidden" name="completed" value=<%= !task.completed %> >
+                <button class="btn btn-primary">Mark <%= task.completed? 'incomplete' : 'complete' %> </button>
+              </form>
+              </td>
             <td><a href=<%= "/tasks/delete/" + task.id %>  class="btn btn-primary">Delete</a></td>
           </tr>
         <% }) %>
