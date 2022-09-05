@@ -46,14 +46,12 @@ const editTask = async (req, res) => {
 };
 
 const updateTask = async (req, res) => {
-    console.log("Inside the updateTask controller", req.body)
   let task = false;
   try {
     if (req.body.completed === "true") {
       req.body.completed = true;
     } else {
       req.body.completed = false;
-      console.log("I am here", req.body)
     }
 
     task = await Task.findById(req.params.id);
