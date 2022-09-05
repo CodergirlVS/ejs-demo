@@ -7,17 +7,18 @@ const session = require('express-session')
 
 var express = require('express');
 var app = express();
-// const requiredEnvVars = ['SESSION_SECRET', 'MONGODB_URI', 'SPECIAL_SUPERSECRET'];
-// requiredEnvVars.forEach((var) => {
-//   if (process.env.[var] === undefined) { 
-//    throw new Error(`Required environment variable ${var} is missing`);
-//  }
-// });
+
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
 //set up the session
+const requiredEnvVars = ['SESSION_SECRET', 'MONGODB_URI', 'SPECIAL_SUPERSECRET'];
+requiredEnvVars.forEach((item) => {
+  if (process.env[item] === undefined) { 
+   throw new Error(`Required environment variable ${item} is missing`);
+ }
+});
 
 app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true })); 
 
